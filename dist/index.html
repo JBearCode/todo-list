@@ -8,8 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="static"></div>
+    <form id="main-form">
+      <input type="text" id="todo-title-input">
+      <select id="select-category" name="select-category">
+        <option value="None">None</option>
+        <option value="Work">Work</option>
+        <option value="Kids">Kids</option>
+      </select>
+      <input type="date" id="due-date-input">
+      <label for="urgent-checkbox">Urgent
+      <input type="checkbox"id="urgent-checkbox">
+      </label>
+      <input type="submit" id="form-submit">
+    </form>
     <div id="content"></div>
-    <script src="bundle.js"></script>
+    <script src="test.js"></script>
 </body>
 </html>

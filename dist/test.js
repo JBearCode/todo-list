@@ -1,16 +1,14 @@
-console.log('webpack is working');
+console.log('webpack disabled (testing)');
 
 let myTodoArray = [];
 let myCategoryWork = [];
 let myCategoryKids = [];
 
-const todoTitleInput = document.getElementById('todo-title-input');
-const categoryDropdown = document.getElementById('select-category');
-const dueDateInput = document.getElementById('do-date-input');
 const submitButton = document.getElementById('form-submit');
+const mainForm = document.getElementById('main-form');
 
 window.onload = function() {
-    submitButton.addEventListener(addItemToArray);
+    mainForm.addEventListener("submit", addItemToArray);
 }
 
 class TodoClass {
@@ -24,16 +22,13 @@ class TodoClass {
     };
 };
 
-function addItemToArray() {
+function addItemToArray(e) {
     e.preventDefault();
     const todoTitle = document.getElementById('todo-title-input').value;
     const categoryDropdown = document.getElementById('select-category').value;
     const currentTime = Date.now();
-    const dueDate = document.getElementById('do-date-input').value;
+    const dueDate = document.getElementById('due-date-input').value;
+    if (dueDate == null) { dueDate = ""};
     const urgent = document.getElementById('urgent-checkbox').checked;
-    myTodoArray.push(new TodoClass(todoTitle, categoryDropdown, currentTime, dueDate, urgent, false);
-    form.reset();
+    myTodoArray.push(new TodoClass(todoTitle, categoryDropdown, currentTime, dueDate, urgent, false));
 }
-
-const submitButton = document.getElementById('form-submit');
-
