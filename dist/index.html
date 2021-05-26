@@ -4,15 +4,44 @@
   <title>Todo List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
+    <header>
+      <nav>
+        <ul class="menu">
+          <li class="logo"><a href="#">My List</a></li>
+          <li class="item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="item has-submenu">
+            <a tabindex="0"><i class="fas fa-calendar"></i> By Date</a>
+              <ul class="submenu">
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-day"></i> Due Today</a></li>
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-week"></i> Due This Week</a></li>
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-alt"></i> Due This Month</a></li>
+              </ul>
+          </li>
+          <li class="item has-submenu">
+              <a tabindex="0"><i class="fas fa-folder"></i> By Category</a>
+              <ul class="submenu">
+                  <li class="subitem"><a href="#">Work</a></li>
+                  <li class="subitem"><a href="#">School</a></li>
+                  <li class="subitem"><a href="#">Kids</a></li>
+              </ul>
+          </li>
+          <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+      </nav>
+
+    </header>
+    <main>
     <form id="main-form">
       <input type="text" id="todo-title-input">
       <select id="select-category" name="select-category">
         <option value="None">None</option>
         <option value="Work">Work</option>
+        <option value="School">School</option>
         <option value="Kids">Kids</option>
       </select>
       <input type="date" id="due-date-input">
@@ -22,6 +51,8 @@
       <input type="submit" id="form-submit">
     </form>
     <div id="content"></div>
+    </main>
+    
     <script src="test.js"></script>
 </body>
 </html>
