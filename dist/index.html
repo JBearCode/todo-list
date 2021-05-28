@@ -10,49 +10,48 @@
 </head>
 <body>
     <header>
-      <nav>
+      <nav class="nav">
         <ul class="menu">
-          <li class="logo"><a href="#">My List</a></li>
-          <li class="item"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li class="logo"><a href="#"></i> My List</a></li>
+          <li class="item"><a href="#"><i class="fas fa-home"></i>&nbsp&nbspHome</a></li>
           <li class="item has-submenu">
-            <a tabindex="0"><i class="fas fa-calendar"></i> By Date</a>
+            <a tabindex="0"><i class="fas fa-calendar"></i>&nbsp&nbspBy Due Date</a>
               <ul class="submenu">
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-day"></i> Due Today</a></li>
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-week"></i> Due This Week</a></li>
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-alt"></i> Due This Month</a></li>
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-day"></i>&nbsp&nbspToday</a></li>
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-week"></i>&nbsp&nbspThis Week</a></li>
+                <li class="subitem"><a href="#"><i class="fas fa-calendar-alt"></i>&nbsp&nbspThis Month</a></li>
               </ul>
           </li>
           <li class="item has-submenu">
-              <a tabindex="0"><i class="fas fa-folder"></i> By Category</a>
+              <a tabindex="0"><i class="fas fa-folder"></i>&nbsp&nbspBy Category</a>
               <ul class="submenu">
                   <li class="subitem"><a href="#">Work</a></li>
                   <li class="subitem"><a href="#">School</a></li>
                   <li class="subitem"><a href="#">Kids</a></li>
               </ul>
           </li>
+          <li class="item"><a href="#"><i class="fas fa-edit"></i>&nbsp&nbspEdit Categories</a></li>
           <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
       </nav>
-
     </header>
+
     <main>
     <form id="main-form">
-      <input type="text" id="todo-title-input">
+      <input type="text" id="todo-title-input" placeholder="What to do?" required>
       <select id="select-category" name="select-category">
-        <option value="None">None</option>
+        <option value="None">Choose Category</option>
         <option value="Work">Work</option>
         <option value="School">School</option>
         <option value="Kids">Kids</option>
       </select>
       <input type="date" id="due-date-input">
-      <label for="urgent-checkbox">Urgent
-      <input type="checkbox"id="urgent-checkbox">
-      </label>
+      <button type="button" id="checkbutton">Not Urgent</button>
       <input type="submit" id="form-submit">
     </form>
     <div id="content"></div>
     </main>
-    
+
     <script src="test.js"></script>
 </body>
 </html>

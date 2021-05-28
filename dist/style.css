@@ -13,15 +13,16 @@ body {
 nav {
     background: #222;
     padding: 0 15px;
-}
-
-a {
-    color: white;
-    text-decoration: none;
+    margin-bottom: 15px;
 }
 
 .menu, .submenu {   
     list-style-type: none;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
 }
 
 .logo {
@@ -31,6 +32,7 @@ a {
 
 .item {
     padding: 10px;
+    position: relative;
 }
 
 .item a:hover, .item a:hover::after {
@@ -48,19 +50,29 @@ a {
     display: block;
     padding: 15px 5px;
 }
+
 .menu li.subitem a {
     padding: 15px;
 }
+
 .toggle {
     order: 1;
     font-size: 20px;
 }
+
 .item {
     order: 2;
     width: 100%;
     text-align: center;
     display: none;
+    position: relative; /* keep submenus same width as menus */
 }
+
+/* keep submenus same width as menus */
+.item ul {
+    width: 100%;
+}
+
 .active .item {
     display: block;
 }
@@ -69,12 +81,20 @@ a {
 .submenu {
     display: none;
 }
+
 .submenu-active .submenu {
    display: block;
 }
+
 .has-submenu i {
-    font-size: 12px;
+   font-size: 12px;
 }
+
+i {
+    position: relative;
+    bottom: 1px;
+}
+
 .has-submenu > a::after {
     font-family: "Font Awesome 5 Free";
     font-size: 12px;
@@ -91,3 +111,55 @@ a {
     background-color: #111;
     border-radius: 3px;
 }
+
+/* media query for desktop nav */
+@media all and (min-width: 680px) {
+    .menu {
+        align-items: flex-start;  
+        justify-content: center;   
+        flex-wrap: nowrap;
+        background: none;
+    }
+    .logo {
+        order: 0;
+        flex: 1;
+    }
+    .item {
+        order: 1;
+        position: relative;
+        display: block; 
+        width: auto;
+    }
+
+    .submenu-active .submenu {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 68px;
+        background: #111;
+    }
+    .toggle {
+        display: none;
+    }
+    .submenu-active {
+        border-radius: 0;
+    }
+}
+
+/* style new todo form */
+input, select, #checkbutton {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    margin: 10px;
+    border: 2px black solid;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 5px;
+    background-color: #58ffec;
+}
+
+/* remove down arrow from select button */
+select {
+    appearance: none;
+}
+
