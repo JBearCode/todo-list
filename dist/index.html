@@ -36,7 +36,7 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
     <form id="main-form">
         <input type="text" class="todo-form-input" id="todo-title-input" placeholder="What to do?" required>
         <select class="todo-form-input" id="select-category" name="select-category">
@@ -50,9 +50,16 @@
       </div>
         <input type="submit" class="todo-form-input" id="form-submit">
     </form>
-    <div id="content"></div>
-
-    </div>
+    <div id="table-div">
+      <table id="todo-table">
+          <tr>
+              <th class="col1">Date</th>
+              <th class="col2">To Do</th>
+              <th class="col3"></th>
+          </tr>
+          <tbody id="js-table"></tbody>
+      </table>
+      </div>
     </main>
 
     <script src="test.js"></script>

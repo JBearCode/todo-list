@@ -13,7 +13,11 @@ body {
 nav {
     background: #222;
     padding: 0 15px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+form {
+    margin-bottom: 10px;
 }
 
 .menu, .submenu {   
@@ -188,4 +192,55 @@ select {
     #todo-title-input {
         width: 30%;
     }
+}
+
+/* table styles */
+#table-div {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    outline: thin solid rgb(172, 172, 172);
+    table-layout: fixed;
+}
+td, th {
+    border-bottom: thin solid rgb(172, 172, 172);
+    padding: 0.5rem;
+    text-align: left;
+    padding: 10px 10px;
+}
+
+.col1 {
+    width: 150px;
+}
+
+.col3 {
+    width: 50px;
+}
+
+#js-table tr:nth-child(odd) {
+    background-color: rgb(247, 234, 255)
+}
+
+.red {
+    color: red;
+}
+
+.grey {
+    color: lightgray;
+}
+
+.right {
+    float: right;
+    padding-right: 20px;
 }

@@ -6,10 +6,13 @@ let idCounter = 1;
 
 const submitButton = document.getElementById('form-submit');
 const mainForm = document.getElementById('main-form');
+const urgentButton = document.getElementById('checkbutton');
+const main = document.getElementById('main');
 
 window.onload = function() {
     mainForm.addEventListener("submit", addItemToArray);
     populate();
+    homeClick();
 }
 
 function populate() {
@@ -59,7 +62,6 @@ class TodoClass {
     };
 };
 
-let urgentButton = document.getElementById('checkbutton');
 
 function addItemToArray(e) {
     e.preventDefault();
@@ -73,7 +75,34 @@ function addItemToArray(e) {
         urgent = false;
     } else urgent = true;
     myTodoArray.push(new TodoClass(todoTitle, categoryDropdown, idCounter++, dueDate, urgent, false));
+    mainForm.reset();
+    if (urgentButton.textContent === "Urgent") {
+        toggleText();
+    }
 }
+
+function showArray(inputArray) {
+    const jsTable = document.getElementById('js-table');
+    jsTable.innerHTML = "";
+  
+    for (let i = 0; i < inputArray.length; i++) {
+      let newRow = jsTable.insertRow(-1);
+
+      let dateCell = newRow.insertCell(-1);
+      let dateText = document.createTextNode(inputArray[i].due);
+      dateCell.appendChild(dateText);
+  
+      let titleCell = newRow.insertCell(-1);
+      if (inputArray[i].urgent === true) {
+        titleCell.innerHTML = '<i class="fas fa-star red"></i>' + " " + inputArray[i].title;
+      } else {
+        titleCell.innerHTML = '<i class="fas fa-star grey"></i>' + " " + inputArray[i].title;
+      }
+      
+      let deleteIcon = newRow.insertCell(-1);
+      deleteIcon.innerHTML = '<i class="fas fa-minus-circle"></i>';
+    }
+  }
 
 // navigation toggle code
 const toggle = document.querySelector(".toggle");
@@ -127,7 +156,6 @@ function closeSubmenu(e) {
    
   /* Event listener */
   document.addEventListener("click", closeSubmenu, false);
-  
   urgentButton.addEventListener("click", toggleText, false);
 
   function toggleText() {
@@ -139,5 +167,11 @@ function closeSubmenu(e) {
           urgentButton.textContent = "Not Urgent";
           urgentButton.style.backgroundColor = "#58ffec";
       }
+  }
+
+  // function for home link
+  function homeClick() {
+    main.style.display = "unset";
+    showArray(myTodoArray);
   }
 
