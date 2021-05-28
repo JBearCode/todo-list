@@ -38,18 +38,21 @@
 
     <main>
     <form id="main-form">
-      <input type="text" id="todo-title-input" placeholder="What to do?" required>
-      <select id="select-category" name="select-category">
-        <option value="None">Choose Category</option>
-        <option value="Work">Work</option>
-        <option value="School">School</option>
-        <option value="Kids">Kids</option>
-      </select>
-      <input type="date" id="due-date-input">
-      <button type="button" id="checkbutton">Not Urgent</button>
-      <input type="submit" id="form-submit">
+        <input type="text" class="todo-form-input" id="todo-title-input" placeholder="What to do?" required>
+        <select class="todo-form-input" id="select-category" name="select-category">
+          <option value="None">Choose Category</option>
+          <option value="Work">Work</option>
+          <option value="School">School</option>
+          <option value="Kids">Kids</option>
+        </select>
+        <input type="date" class="todo-form-input" id="due-date-input">
+        <button type="button" class="todo-form-input" id="checkbutton">Not Urgent</button>
+      </div>
+        <input type="submit" class="todo-form-input" id="form-submit">
     </form>
     <div id="content"></div>
+
+    </div>
     </main>
 
     <script src="test.js"></script>

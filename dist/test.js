@@ -133,7 +133,11 @@ function closeSubmenu(e) {
   function toggleText() {
       if (urgentButton.textContent === "Not Urgent") {
           urgentButton.textContent = "Urgent";
+          urgentButton.style.backgroundColor = "#fc7f2d";
+
       } else {
           urgentButton.textContent = "Not Urgent";
+          urgentButton.style.backgroundColor = "#58ffec";
       }
   }
+

@@ -112,7 +112,31 @@ i {
     border-radius: 3px;
 }
 
-/* media query for desktop nav */
+/* style new todo form */
+
+.todo-form-input {
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 10px;
+    margin: 5px 1%;
+    border: 2px black solid;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 5px;
+    background-color: #58ffec;
+    width: 47%;
+    height: 45px;
+}
+
+#todo-title-input {
+    width: 96.5%;
+}
+
+/* remove down arrow from select button */
+select {
+    appearance: none;
+}
+
+/* media query for desktop nav + input form */
 @media all and (min-width: 680px) {
     .menu {
         align-items: flex-start;  
@@ -130,7 +154,6 @@ i {
         display: block; 
         width: auto;
     }
-
     .submenu-active .submenu {
         display: block;
         position: absolute;
@@ -144,22 +167,25 @@ i {
     .submenu-active {
         border-radius: 0;
     }
+    /* style inputs for desktop */
+    .todo-form-input {
+        width: 22%;
+    }
+    #todo-title-input {
+        width: 95.6%;
+    }
 }
 
-/* style new todo form */
-input, select, #checkbutton {
-    font-family: sans-serif;
-    font-size: 16px;
-    padding: 10px;
-    margin: 10px;
-    border: 2px black solid;
-    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
-    border-radius: 5px;
-    background-color: #58ffec;
+@media all and (min-width: 1050px) {
+    /* style inputs for desktop */
+    .todo-form-input {
+        width: 21%;
+        margin: 6px;
+    }
+    #checkbutton, #form-submit {
+        width: 10%;
+    }
+    #todo-title-input {
+        width: 30%;
+    }
 }
-
-/* remove down arrow from select button */
-select {
-    appearance: none;
-}
-
