@@ -8,12 +8,58 @@ const submitButton = document.getElementById('form-submit');
 const mainForm = document.getElementById('main-form');
 const urgentButton = document.getElementById('checkbutton');
 const main = document.getElementById('main');
+const toggle = document.querySelector(".toggle");
+const menu = document.querySelector(".menu");
+const table = document.querySelector("todo-table");
 
 window.onload = function() {
     mainForm.addEventListener("submit", addItemToArray);
     populate();
     homeClick();
+    window.addEventListener("click", tableClick);
 }
+
+function tableClick(e) {
+    if (e.target.closest(".urgent-span") || e.target.closest(".not-urgent-span")) {
+        if (e.target.tagName === "I") {
+            let span = e.target.parentNode;
+            updateUrgencyInArray(span);
+            updateUrgencyInDOM(span);
+        } else if (e.target.tagName === "SPAN") {
+            let span = e.target;
+            updateUrgencyInArray(span);
+            updateUrgencyInDOM(span);
+        }
+    }
+};
+
+function updateUrgencyInArray(spanID) {
+    spanID = spanID.getAttribute("data-id");
+    spanID = parseInt(spanID, 10);
+    let index = myTodoArray.findIndex(x => x.id == spanID);
+    let urgentStatus = myTodoArray[index].urgent;
+    if (urgentStatus == true) {
+        myTodoArray[index].urgent = false;
+    } else if (urgentStatus == false) {
+        myTodoArray[index].urgent = true;
+    }
+}
+
+function updateUrgencyInDOM(span) {
+    if (span.classList.contains('not-urgent-span')) {
+        span.classList.remove('not-urgent-span');
+        span.classList.add('urgent-span');
+        span.childNodes[0].classList.remove('grey');
+        span.childNodes[0].classList.add('red');
+    }
+    else if (span.classList.contains('urgent-span')) {
+        span.classList.remove('urgent-span');
+        span.classList.add('not-urgent-span');
+        span.childNodes[0].classList.remove('red');
+        span.childNodes[0].classList.add('grey');
+    }
+}
+
 
 function populate() {
     myTodoArray.push(new TodoClass("Catch the escaped giraffe", "Work", idCounter++, getRelativeDate(-3), true, true));
@@ -94,9 +140,9 @@ function showArray(inputArray) {
   
       let titleCell = newRow.insertCell(-1);
       if (inputArray[i].urgent === true) {
-        titleCell.innerHTML = '<i class="fas fa-star red"></i>' + " " + inputArray[i].title;
+        titleCell.innerHTML = '<span class="urgent-span" data-id="' + inputArray[i].id + '"><i class="fas fa-star red"></i></span>' + " " + inputArray[i].title;
       } else {
-        titleCell.innerHTML = '<i class="fas fa-star grey"></i>' + " " + inputArray[i].title;
+        titleCell.innerHTML = '<span class="not-urgent-span" data-id="' + inputArray[i].id + '"><i class="fas fa-star grey"></i></span>' + " " + inputArray[i].title;
       }
       
       let deleteIcon = newRow.insertCell(-1);
@@ -105,9 +151,6 @@ function showArray(inputArray) {
   }
 
 // navigation toggle code
-const toggle = document.querySelector(".toggle");
-const menu = document.querySelector(".menu");
- 
 function toggleMenu() {
     if (menu.classList.contains("active")) {
         menu.classList.remove("active");
@@ -174,4 +217,3 @@ function closeSubmenu(e) {
     main.style.display = "unset";
     showArray(myTodoArray);
   }
-
