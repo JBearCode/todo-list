@@ -1,25 +1,77 @@
 console.log('webpack disabled (testing)');
 
 let myTodoArray = [];
-let myCategory = [];
 let idCounter = 1;
 
+const nav = document.getElementById('nav');
 const submitButton = document.getElementById('form-submit');
 const mainForm = document.getElementById('main-form');
 const urgentButton = document.getElementById('checkbutton');
 const main = document.getElementById('main');
 const toggle = document.querySelector(".toggle");
 const menu = document.querySelector(".menu");
-const table = document.querySelector("todo-table");
+const table = document.querySelector("#todo-table");
+const homeButton = document.querySelector("#home-button");
 
 window.onload = function() {
-    mainForm.addEventListener("submit", addItemToArray);
     populate();
     homeClick();
-    window.addEventListener("click", tableClick);
+    mainForm.addEventListener("submit", addItemToArray);
+    table.addEventListener("click", tableClick);
+    nav.addEventListener("click", navClick);
+}
+
+function navClick(e) {
+    console.log(e.target);
+    if (e.target.classList.contains('category')) {
+        let catname = e.target.getAttribute("data-catname");
+        console.log(catname);
+        displayCategory(catname);
+    } else if (e.target.classList.contains('date-menu')) {
+        let timePeriod = e.target.getAttribute('data-date');
+        handleDateClick(timePeriod);
+    } else if (e.target.classList.contains('home-button')) {
+        homeClick();
+    }
+}
+
+function displayCategory(clickedCategory) {
+    console.log("Clicked category is " + clickedCategory);
+    let myCategory = myTodoArray.filter(object => object.project === clickedCategory);
+    showArray(myCategory);
+}
+
+function handleDateClick(timePeriod) {
+    switch(timePeriod) {
+        case "day":
+            console.log('This code executes when "day" is clicked');
+            displayByDueDate(0);
+            break;
+        case "week":
+            console.log('This code executes when "week" is clicked');
+            displayByDueDate(7);
+            break;
+        case "month":
+            console.log('This code executes when "month" is clicked');
+            displayByDueDate(30);
+            break;
+        default:
+            return;
+    }
+}
+
+function displayByDueDate(number) {
+    let sortDate = getRelativeDate(number);
+    console.log(sortDate);
+    let dueDateArray = myTodoArray.filter(object => object.due <= sortDate);
+    dueDateArray.sort((a, b) => new Date(a.due) - new Date(b.due));
+    console.table(dueDateArray);
+    showArray(dueDateArray);
 }
 
 function tableClick(e) {
+    console.log(e);
+    console.log(e.target);
     if (e.target.closest(".urgent-span") || e.target.closest(".not-urgent-span")) {
         if (e.target.tagName === "I") {
             let span = e.target.parentNode;
@@ -107,7 +159,6 @@ class TodoClass {
         this.complete = complete;
     };
 };
-
 
 function addItemToArray(e) {
     e.preventDefault();

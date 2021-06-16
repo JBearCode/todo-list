@@ -10,24 +10,24 @@
 </head>
 <body>
     <header>
-      <nav class="nav">
+      <nav class="nav" id="nav">
         <ul class="menu">
           <li class="logo"><a href="#"></i> My List</a></li>
-          <li class="item"><a href="#"><i class="fas fa-home"></i>&nbsp&nbspHome</a></li>
+          <li class="item home-button"><a href="#" class="home-button"><i class="fas fa-home home-button"></i>&nbsp&nbspHome</a></li>
           <li class="item has-submenu">
             <a tabindex="0"><i class="fas fa-calendar"></i>&nbsp&nbspBy Due Date</a>
               <ul class="submenu">
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-day"></i>&nbsp&nbspToday</a></li>
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-week"></i>&nbsp&nbspThis Week</a></li>
-                <li class="subitem"><a href="#"><i class="fas fa-calendar-alt"></i>&nbsp&nbspThis Month</a></li>
+                <li class="subitem"><a href="#" class="date-menu" data-date="day"><i class="fas fa-calendar-day"></i>&nbsp&nbspToday</a></li>
+                <li class="subitem"><a href="#" class="date-menu" data-date="week"><i class="fas fa-calendar-week"></i>&nbsp&nbspThis Week</a></li>
+                <li class="subitem"><a href="#" class="date-menu" data-date="month"><i class="fas fa-calendar-alt"></i>&nbsp&nbspThis Month</a></li>
               </ul>
           </li>
           <li class="item has-submenu">
               <a tabindex="0"><i class="fas fa-folder"></i>&nbsp&nbspBy Category</a>
               <ul class="submenu">
-                  <li class="subitem"><a href="#">Work</a></li>
-                  <li class="subitem"><a href="#">School</a></li>
-                  <li class="subitem"><a href="#">Kids</a></li>
+                  <li class="subitem"><a href="#" class="category" data-catname="Work">Work</a></li>
+                  <li class="subitem"><a href="#" class="category" data-catname="School">School</a></li>
+                  <li class="subitem"><a href="#" class="category" data-catname="Kids">Kids</a></li>
               </ul>
           </li>
           <li class="item"><a href="#"><i class="fas fa-edit"></i>&nbsp&nbspEdit Categories</a></li>
